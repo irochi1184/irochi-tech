@@ -21,3 +21,7 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+
+# コンパイル済みファイルはgit管理する必要なし
+/public/js
+/public/css
