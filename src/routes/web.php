@@ -17,13 +17,20 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    // ログインしている場合はホームページにリダイレクト
+    // if (auth()->check()) {
+        return Inertia::render('HomePage'); // カスタムのVueページを表示
+    // }
+    
+    // ログインしていない場合はウェルカムページ
+    // return Inertia::render('Welcome', [
+    //     'canLogin' => Route::has('login'),
+    //     'canRegister' => Route::has('register'),
+    //     'laravelVersion' => Application::VERSION,
+    //     'phpVersion' => PHP_VERSION,
+    // ]);
 });
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
