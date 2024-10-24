@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     container_name: irochi-tech-app
     volumes:
-      - ./src:/var/www/html
+      - ./src:/var/www/html:cached
     ports:
       - 5173:5173
       - 8000:80
