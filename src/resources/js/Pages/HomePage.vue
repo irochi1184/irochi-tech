@@ -49,7 +49,7 @@
     <!-- Hero Section -->
     <section class="hero text-white text-center d-flex align-items-center justify-content-center">
       <div class="container">
-        <h1 class="display-4">Welcome to irochi tech!</h1>
+        <h1 class="display-4">あなたの学習を最大限に</h1>
         <p class="lead">Empowering business professionals and students with effective learning methods.</p>
       </div>
     </section>
@@ -112,8 +112,9 @@ export default {
 <style scoped>
 /* ナビゲーションバーのスタイル調整 */
 .navbar {
-  background-color: rgba(41, 170, 177, 0.95) !important; /* 緑系の色 */
+  background-color: rgba(2, 114, 120, 0.85) !important; /* 緑系の色 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* スクロール時に影を追加 */
+  height: 60px;
 }
 .nav-link {
   color: white !important; /* リンクテキストを白に */
