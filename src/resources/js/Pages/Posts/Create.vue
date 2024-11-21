@@ -34,6 +34,7 @@
 
 <script>
 import { Inertia } from '@inertiajs/inertia';
+import DefaultLayout from '../../Layouts/DefaultLayout.vue';
 
 export default {
   data() {
@@ -49,6 +50,7 @@ export default {
       Inertia.post('/posts', this.form);
     },
   },
+  layout: DefaultLayout,
 };
 </script>
 
