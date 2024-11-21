@@ -110,3 +110,14 @@ h3 {
 .card-btn {
   margin-top: 10px;
 }
+
+.btn-success {
+  background-color: #177976e0 !important; /* ボタンの背景色 */
+  border-color: #13685d !important; /* ボタンの枠線 */
+  color: #ffffff !important; /* ボタンの文字色 */
+}
+
+.btn-success:hover {
+  background-color: #156d6a !important; /* ホバー時の背景色 */
+  border-color: #135249 !important; /* ホバー時の枠線 */
+}
