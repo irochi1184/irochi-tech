@@ -1,7 +1,8 @@
-import './bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
-import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // BootstrapのCSS
+import 'bootstrap'; // BootstrapのJavaScript
+import '@popperjs/core'; // Popper.js
+import '../css/app.css'; // カスタムCSS
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';

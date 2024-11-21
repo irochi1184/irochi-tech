@@ -1,3 +1,112 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+/* ========================
+  カラーパレット
+======================== */
+:root {
+  --primary-color: #086e67; /* 青緑 */
+  --secondary-color: #6c757d; /* グレー */
+  --text-color: #141618; /* テキスト */
+  --background-color: #f8f9fa; /* 背景 */
+  --header-height: 50px; /* ヘッダーの高さ */
+}
+
+/* ========================
+  全体のリセット
+======================== */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+}
+h2 {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: x-large;
+  padding: 10px;
+}
+h3 {
+  font-weight: bold;
+  color: var(--primary-color);
+  font-size: large;
+  padding: 5px;
+}
+
+/* ========================
+  ヘッダー
+======================== */
+.navbar {
+  background-color: rgba(2, 114, 120, 0.85) !important;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.navbar .nav-link {
+  color: white;
+  transition: color 0.2s ease-in-out;
+}
+.navbar a:hover {
+  color: #928c8c;
+}
+
+/* ========================
+  ヒーローセクションのスタイル
+======================== */
+.hero {
+  background: url('/images/siteTop.jpg') no-repeat center center/cover;
+  height: 60vh; /* 高さを調整 */
+  padding: 60px 20px; /* 全画面でのパディング */
+}
+@media (max-width: 576px) {
+  .hero {
+    padding: 30px 10px; /* スマホ画面ではパディングを調整 */
+  }
+  .hero h1 {
+    font-size: 1.8rem; /* スマホ画面ではフォントサイズを縮小 */
+  }
+  .hero p {
+    font-size: 1rem; /* スマホ画面ではフォントサイズを縮小 */
+  }
+}
+
+/* ========================
+  共通のカードスタイル
+======================== */
+.card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card-title {
+  font-weight: bold;
+  color: var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+/* ========================
+  コンテナのスタイル
+======================== */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: var(--header-height) 40px 0px 40px;
+}
+.sub-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 40px;
+}
+.content {
+  margin: 30px 0;
+}
+
+.card-btn {
+  margin-top: 10px;
+}

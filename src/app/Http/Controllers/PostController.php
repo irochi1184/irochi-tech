@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -36,5 +37,23 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('posts.index')->with('success', '記事が作成されました');
+    }
+
+    public function show(Post $post)
+    {
+        $relatedPosts = Post::where('id', '!=', $post->id)
+            ->latest()
+            ->take(3)
+            ->get();
+    
+        return Inertia::render('Posts/Show', [
+            'post' => [
+                'title' => $post->title,
+                'content' => $post->content,
+                'created_at' => Carbon::parse($post->created_at)->timezone('Asia/Tokyo')->format('Y年 n月 j日 H:i'),
+                'user' => $post->user, // 必要に応じてリレーションをロード
+            ],
+            'relatedPosts' => $relatedPosts,
+        ]);
     }
 }
