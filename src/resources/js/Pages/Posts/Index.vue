@@ -6,15 +6,17 @@
         <div
           v-for="post in posts"
           :key="post.id"
-          class="col-md-4 mb-4"
+          class="col-md-4 mb-4 col-sm-6 col-12"
         >
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title"><strong>{{ post.title }}</strong></h5>
-              <p class="card-text">{{ post.content.substring(0, 100) }}...</p>
-              <a :href="`/posts/${post.id}`" class="btn btn-success mt-3">記事</a>
+          <!-- カード全体をリンクに -->
+          <a :href="`/posts/${post.id}`" class="card-link">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">{{ post.title.substring(0, 25) }}...</h5>
+                <p class="card-text">{{ post.content.substring(0, 54) }}...</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
       <div class="text-center mt-5">
@@ -26,6 +28,7 @@
 
 <script>
 import DefaultLayout from '../../Layouts/DefaultLayout.vue';
+
 export default {
   props: {
     posts: Array,

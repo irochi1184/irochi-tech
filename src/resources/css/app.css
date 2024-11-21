@@ -89,6 +89,44 @@ h3 {
   padding-bottom: 5px;
   display: inline-block;
 }
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* カード全体をクリック可能に */
+  height: 200px; /* カードの高さを固定 */
+  /* min-width: 200px; */
+}
+/* ホバー時のスタイル */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: rgba(0, 147, 108, 0.173);
+}
+.card-btn {
+  margin-top: 10px;
+}
+
+/* ========================
+  レスポンシブカードスタイル
+======================== */
+@media (max-width: 1010px) { /* タブレットサイズ以下 */
+  .card-link {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) { /* スマートフォンサイズ */
+  .card-link {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) { /* 小型スマートフォンサイズ */
+  .card-link {
+    height: 200px;
+  }
+}
 
 /* ========================
   コンテナのスタイル
@@ -105,10 +143,6 @@ h3 {
 }
 .content {
   margin: 30px 0;
-}
-
-.card-btn {
-  margin-top: 10px;
 }
 
 .btn-success {
