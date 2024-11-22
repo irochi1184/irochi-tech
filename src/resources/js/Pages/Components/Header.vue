@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand text-white me-auto" href="/">irochi tech</a>
+      <a class="navbar-brand me-auto" href="/">irochi tech</a>
 
       <button
         class="navbar-toggler"
@@ -22,14 +22,14 @@
           <!-- ログイン状態で表示内容を切り替え -->
           <li v-if="auth && auth.user" class="nav-item dropdown">
             <a
-              class="nav-link dropdown-toggle text-white"
+              class="nav-link dropdown-toggle"
               href="#"
               id="userDropdown"
               role="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              <i class="bi bi-person me-2"></i>
+              <i class="bi bi-person"></i>
               {{ auth.user.name }}
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">

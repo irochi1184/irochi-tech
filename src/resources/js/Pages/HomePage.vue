@@ -12,12 +12,12 @@
     <section class="sub-container my-5">
       <h3 class="mt-5">最近投稿された記事</h3>
       <div class="row">
-        <div class="col-sm-3 col-md-4" v-for="article in recentPosts" :key="article.id">
+        <div class="col-md-4 mb-4 col-sm-6 col-12" v-for="article in recentPosts" :key="article.id">
           <a :href="`/posts/${article.id}`" class="card-link">
-            <div class="card mb-4">
+            <div class="card h-100">
               <div class="card-body">
-                <h5 class="card-title">{{ article.title }}</h5>
-                <p class="card-text">{{ article.content.substring(0, 100) }}...</p>
+                <h5 class="card-title">{{ article.title.substring(0, 25) }}</h5>
+                <p class="card-text">{{ article.content.substring(0, 54) }}...</p>
               </div>
             </div>
           </a>

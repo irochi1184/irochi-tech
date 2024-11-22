@@ -44,12 +44,40 @@ h3 {
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* 通常のリンクのスタイル */
 .navbar .nav-link {
   color: white;
   transition: color 0.2s ease-in-out;
 }
-.navbar a:hover {
-  color: #928c8c;
+
+.navbar-nav .nav-link.show {
+  color: white; /* デフォルトの色 */
+}
+
+/* 通常のリンクのホバー */
+.navbar .nav-link:hover {
+  color: #6fdfcb; /* ホバー時の色 */
+}
+
+/* nav-brandのスタイル */
+.navbar .navbar-brand {
+  color: white; /* デフォルトの色 */
+  transition: color 0.2s ease-in-out; /* アニメーション */
+}
+
+.navbar .navbar-brand:hover {
+  color: #6fdfcb; /* ホバー時の色 */
+}
+
+/* ユーザ名（ドロップダウン）のスタイル */
+.navbar .dropdown-toggle {
+  color: white; /* デフォルトの色 */
+  transition: color 0.2s ease-in-out; /* アニメーション */
+}
+
+.navbar .dropdown-toggle:hover {
+  color: #6fdfcb; /* ホバー時の色 */
 }
 
 /* ========================
