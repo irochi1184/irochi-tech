@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container-fluid">
       <a class="navbar-brand text-white me-auto" href="/">irochi tech</a>
+
       <button
         class="navbar-toggler"
         type="button"
@@ -15,6 +16,9 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/posts">記事一覧を見る</a>
+          </li>
           <!-- ログイン状態で表示内容を切り替え -->
           <li v-if="auth && auth.user" class="nav-item dropdown">
             <a

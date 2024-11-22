@@ -10,55 +10,35 @@
 
     <!-- Content Section -->
     <section class="sub-container my-5">
-      <h2 class="mb-4">Recent Articles</h2>
+      <h3 class="mt-5">最近投稿された記事</h3>
       <div class="row">
-        <div class="col-sm-3 col-md-4" v-for="article in articles" :key="article.id">
-          <div class="card mb-4">
-            <div class="card-body">
-              <h5 class="card-title">{{ article.title }}</h5>
-              <p class="card-text">{{ article.content.substring(0, 100) }}...</p>
-              <a href="#" class="btn btn-success">Read More</a>
+        <div class="col-sm-3 col-md-4" v-for="article in recentPosts" :key="article.id">
+          <a :href="`/posts/${article.id}`" class="card-link">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">{{ article.title }}</h5>
+                <p class="card-text">{{ article.content.substring(0, 100) }}...</p>
+              </div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
-      <a href="/posts" class="btn btn-success mt-4">記事一覧を見る</a>
     </section>
+
+    <div class="sub-container mb-5">
+      <a href="/posts" class="btn btn-success mt-4">記事一覧を見る</a>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import { Inertia } from '@inertiajs/inertia';
-import DefaultLayout from '../Layouts/DefaultLayout.vue';
+import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 
 export default {
   props: {
-    auth: Object, // Inertiaから受け取るauthプロパティを定義
+    auth: Object,
+    recentPosts: Array, // サーバーから受け取る最近の投稿データ
   },
   layout: DefaultLayout,
-  data() {
-    return {
-      articles: []
-    };
-  },
-  methods: {
-    logout() {
-      Inertia.post('/logout'); // ログアウト処理をInertiaで行う
-    }
-  },
-  mounted() {
-    axios.get('/api/articles')
-      .then(response => {
-        this.articles = response.data;
-      })
-      .catch(error => {
-        console.error('Error fetching articles:', error);
-      });
-  }
-}
+};
 </script>
-
-<style scoped>
-
-</style>
