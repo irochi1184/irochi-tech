@@ -14,7 +14,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="content" class="form-label">本文</label>
+        <label for="content" class="form-label">本文 (マークダウン形式)</label>
         <textarea
           id="content"
           v-model="form.content"
@@ -23,6 +23,10 @@
           placeholder="記事の内容を入力してください"
           required
         ></textarea>
+      </div>
+      <div class="mb-3">
+        <h4>プレビュー</h4>
+        <div v-html="markdownPreview" class="border p-3 rounded bg-light"></div>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-success">投稿する</button>
@@ -35,6 +39,7 @@
 <script>
 import { Inertia } from '@inertiajs/inertia';
 import DefaultLayout from '../../Layouts/DefaultLayout.vue';
+import MarkdownIt from 'markdown-it';
 
 export default {
   data() {
@@ -44,6 +49,12 @@ export default {
         content: '',
       },
     };
+  },
+  computed: {
+    markdownPreview() {
+      const md = new MarkdownIt();
+      return md.render(this.form.content);
+    },
   },
   methods: {
     submit() {
