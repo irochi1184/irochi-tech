@@ -3,6 +3,8 @@ import 'bootstrap'; // BootstrapのJavaScript
 import '@popperjs/core'; // Popper.js
 import '../css/app.css'; // カスタムCSS
 import 'bootstrap-icons/font/bootstrap-icons.css';
+// import 'highlight.js/styles/github.css'; // ハイライトのスタイル
+import 'highlight.js/styles/panda-syntax-dark.css'; // panda-syntax-darkテーマをインポート
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';

@@ -15,6 +15,8 @@
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import RelatedPosts from '@/Pages/Components/RelatedPosts.vue';
 import MarkdownIt from 'markdown-it';
+import markdownItLinkAttributes from 'markdown-it-link-attributes';
+import markdownItHighlight from 'markdown-it-highlightjs';
 
 export default {
   props: {
@@ -24,7 +26,16 @@ export default {
   },
   computed: {
     markdownContent() {
-      const md = new MarkdownIt();
+      const md = new MarkdownIt({
+        linkify: true, // URLをリンクとして処理
+      })
+        .use(markdownItLinkAttributes, {
+          attrs: {
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          },
+        })
+        .use(markdownItHighlight);
       return md.render(this.post.content);
     },
   },
@@ -39,5 +50,21 @@ export default {
 .content {
   font-size: 1.2rem;
   line-height: 1.8;
+}
+pre {
+  background-color: #444e57;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+code {
+  color: #33d69d;
+}
+a {
+  color: #086e67;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 </style>
