@@ -1,7 +1,17 @@
 <template>
   <div class="container my-5">
-    <h2>{{ post.title }}</h2>
-    <p class="text-muted">作成者: {{ post.user.name }} | 投稿日: {{ post.created_at }}</p>
+    <h1>{{ post.title }}</h1>
+    <div class="d-flex align-items-center justify-content-between text-muted">
+      <!-- 作成者と投稿日 -->
+      <div>
+        作成者: {{ post.user.name }} | 投稿日: {{ post.created_at }}
+      </div>
+      <!-- 編集・削除ボタン -->
+      <div v-if="auth.user.id == post.user.id">
+        <a :href="`/posts/${post.id}/edit`" class="btn btn-primary me-2">記事を編集</a>
+        <button @click="deletePost" class="btn btn-danger">削除</button>
+      </div>
+    </div>
     <hr>
     <div class="content">
       <div v-html="markdownContent" class="content"></div>
@@ -12,6 +22,7 @@
 </template>
 
 <script>
+import { Inertia } from '@inertiajs/inertia';
 import DefaultLayout from '@/Layouts/DefaultLayout.vue';
 import RelatedPosts from '@/Pages/Components/RelatedPosts.vue';
 import MarkdownIt from 'markdown-it';
@@ -43,6 +54,22 @@ export default {
     RelatedPosts, // コンポーネントを登録
   },
   layout: DefaultLayout,
+  methods: {
+    deletePost() {
+      if (confirm('この記事を削除してもよろしいですか？')) {
+        Inertia.delete(`/posts/${this.post.id}`, {
+          onSuccess: () => {
+            alert('記事が削除されました');
+            window.location.href = '/posts'; // 記事一覧にリダイレクト
+          },
+          onError: (errors) => {
+            console.error(errors);
+            alert('削除に失敗しました');
+          },
+        });
+      }
+    },
+  },
 };
 </script>
 

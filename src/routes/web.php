@@ -50,6 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
     Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit'); // 編集画面
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy'); // 削除
 });
 
 require __DIR__.'/auth.php';
