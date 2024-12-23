@@ -136,6 +136,33 @@ h3 {
 }
 
 /* ========================
+  共通のボタンスタイル
+======================== */
+.btn-primary {
+  background-color: #ffffff;
+  border: 1px solid #086e67;
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: #086e67;
+  border: 1px solid #086e67;
+}
+
+.btn-danger {
+  color: rgb(200, 13, 13);
+  background-color: white;
+  border: 1px solid rgb(200, 13, 13);
+}
+
+.btn-danger:hover {
+  text-decoration:underline;
+  color: white;
+  background-color: rgb(200, 13, 13);
+  border: 1px solid rgb(200, 13, 13);
+}
+
+/* ========================
   レスポンシブカードスタイル
 ======================== */
 @media (max-width: 1010px) { /* タブレットサイズ以下 */
