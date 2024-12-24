@@ -1,8 +1,16 @@
 <template>
-  <div class="container my-5">
-    <h2>{{ post.title }}</h2>
-    <p class="text-muted">作成者: {{ post.user.name }} | 投稿日: {{ post.created_at }}</p>
-    <hr>
+  <div class="container mx-auto">
+    <h1 class="text-2xl font-bold mt-16">{{ post.title }}</h1>
+    <div class="flex justify-between text-gray-500">
+      <!-- 作成者と投稿日 -->
+      <span style="padding: 10px;">作成者: {{ post.user.name }} | 投稿日: {{ post.created_at }}</span>
+      <!-- 編集・削除ボタン -->
+      <div v-if="auth.user.id == post.user.id">
+        <a :href="`/posts/${post.id}/edit`" class="btn btn-primary me-2">記事を編集</a>
+        <button @click="deletePost" class="btn btn-danger">削除</button>
+      </div>
+    </div>
+    <hr class="my-2"/>
     <div class="content">
       <div v-html="markdownContent" class="content"></div>
     </div>

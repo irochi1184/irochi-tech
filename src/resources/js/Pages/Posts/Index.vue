@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="container my-5">
-      <h2 class="mb-4">記事一覧</h2>
+    <div class="container mb-4">
+      <h2 class="mb-4 mt-16">記事一覧</h2>
       <div class="row">
         <div
           v-for="post in posts"

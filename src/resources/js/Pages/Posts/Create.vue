@@ -1,79 +1,69 @@
 <template>
-  <div class="container my-5">
-    <h2 class="mb-4 text-center">新しい記事を作成</h2>
-    <div class="row">
+  <div class="container mb-4">
+    <h2 class="text-center text-2xl font-bold mb-8 mt-14">新しい記事を作成</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- 左半分：記事入力フォーム -->
-      <div class="col-md-6">
-        <form @submit.prevent="submit" class="bg-white p-4 shadow-sm rounded">
-          <div class="mb-3">
-            <label for="title" class="form-label">タイトル</label>
+      <div>
+        <form @submit.prevent="submit" class="bg-white p-6 shadow rounded">
+          <div class="mb-6">
+            <label for="title" class="block text-lg font-semibold mb-2">タイトル</label>
             <input
               type="text"
               id="title"
               v-model="form.title"
-              class="form-control"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
               placeholder="記事のタイトルを入力してください"
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="content" class="form-label">本文 (マークダウン形式)</label>
+          <div class="mb-6">
+            <label for="content" class="block text-lg font-semibold mb-2">本文 (マークダウン形式)</label>
             <textarea
               id="content"
               v-model="form.content"
-              class="form-control"
+              class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-teal-500 focus:outline-none"
               rows="10"
               placeholder="記事の内容を入力してください"
               required
             ></textarea>
           </div>
           <div class="text-center">
-            <button type="submit" class="btn btn-success">投稿する</button>
-            <a href="/posts" class="btn btn-outline-secondary ms-2">キャンセル</a>
+            <button
+              type="submit"
+              class="btn btn-success"
+            >
+              投稿する
+            </button>
+            <a
+              href="/posts"
+              class="btn btn-primary ml-4"
+              style=""
+            >
+              キャンセル
+            </a>
           </div>
         </form>
       </div>
 
       <!-- 右半分：マークダウンガイドとプレビュー -->
-      <div class="col-md-6">
+      <div>
         <!-- 折りたたみ式マークダウンガイド -->
-        <div class="accordion mb-3" id="markdownGuideAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingGuide">
-              <button
-                class="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseGuide"
-                aria-expanded="false"
-                aria-controls="collapseGuide"
-              >
-                マークダウンガイド
-              </button>
-            </h2>
-            <div
-              id="collapseGuide"
-              class="accordion-collapse collapse"
-              aria-labelledby="headingGuide"
-              data-bs-parent="#markdownGuideAccordion"
-            >
-              <div class="accordion-body">
-                <ul>
-                  <li><strong>見出し</strong>: <code># 見出し1</code>, <code>## 見出し2</code>, ...</li>
-                  <li><strong>太字</strong>: <code>**太字**</code></li>
-                  <li><strong>斜体</strong>: <code>*斜体*</code></li>
-                  <li><strong>リンク</strong>: <code>[リンクテキスト](URL)</code></li>
-                  <li><strong>コードブロック</strong>: <code>```コード```</code></li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div>
+          <details class="bg-gray-100 p-4 shadow rounded mb-6">
+            <summary class="text-lg font-semibold cursor-pointer">マークダウンガイド</summary>
+            <ul class="mt-4 space-y-2">
+              <li><strong>見出し</strong>: <code># 見出し1</code>, <code>## 見出し2</code>, ...</li>
+              <li><strong>太字</strong>: <code>**太字**</code></li>
+              <li><strong>斜体</strong>: <code>*斜体*</code></li>
+              <li><strong>リンク</strong>: <code>[リンクテキスト](URL)</code></li>
+              <li><strong>コードブロック</strong>: <code>```コード```</code></li>
+            </ul>
+          </details>
         </div>
-
         <!-- プレビューエリア -->
-        <div class="bg-light p-3 shadow-sm rounded">
-          <h4>プレビュー</h4>
-          <div v-html="highlightedMarkdown" class="border p-3 rounded"></div>
+        <div class="bg-gray-100 p-6 shadow rounded">
+          <h4 class="text-lg font-semibold mb-4">プレビュー</h4>
+          <div v-html="highlightedMarkdown" class="prose max-w-none"></div>
         </div>
       </div>
     </div>
@@ -121,38 +111,11 @@ export default {
 </script>
 
 <style scoped>
-/* プレビューエリアのスタイル */
-pre {
+/* プレビューエリア用スタイル */
+.prose pre {
   background-color: #f8f9fa;
   padding: 10px;
   border-radius: 5px;
   overflow-x: auto;
-}
-
-code {
-  font-family: 'Source Code Pro', monospace;
-  color: #d63384;
-}
-
-/* 全体レイアウト調整 */
-.container {
-  max-width: 1200px;
-}
-
-.shadow-sm {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-ul {
-  padding-left: 20px;
-  margin: 0;
-}
-
-ul li {
-  margin-bottom: 10px;
-}
-
-.border {
-  border: 1px solid #ddd;
 }
 </style>
